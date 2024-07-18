@@ -1,0 +1,5 @@
+version: '3.8'
+  docker_restart_manager:
+    build: .
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
