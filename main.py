@@ -1,6 +1,8 @@
 import docker
 import logging
 from datetime import datetime
+import pytz
+import os
 from time import sleep
 
 # Set up logging
@@ -8,6 +10,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Initialize Docker client
 client = docker.from_env()
+
+# Get the timezone from environment variable or default to UTC
+TZ = os.getenv('TZ', 'UTC')
 
 def restart_containers():
     """Restart containers based on the schedule specified in their labels."""
@@ -17,7 +22,8 @@ def restart_containers():
         logging.error(f"Error fetching containers: {e}")
         return
 
-    current_time = datetime.now().strftime('%H:%M')
+    # Get the current time in the specified timezone
+    current_time = datetime.now(pytz.timezone(TZ)).strftime('%H:%M')
     
     for container in containers:
         try:
