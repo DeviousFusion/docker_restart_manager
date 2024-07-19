@@ -49,8 +49,8 @@ def main():
         except Exception as e:
             logging.error(f"Unexpected error: {e}")
         
-        # Wait for 60 seconds before checking again
-        sleep(60)
+        # Wait for 15 seconds before checking again
+        sleep(15)
 
 if __name__ == "__main__":
     main()
