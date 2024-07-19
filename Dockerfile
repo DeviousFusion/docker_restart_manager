@@ -4,7 +4,7 @@ FROM python:3.12-slim
 COPY main.py /usr/src/app/main.py
 
 # Install docker package
-RUN pip install docker
+RUN pip install docker pytz
 
 # Set the working directory
 WORKDIR /usr/src/app
