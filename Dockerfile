@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM --platform=linux/arm64/v8 arm64v8/python:3.12-slim
 
 # Copy the script into the container
 COPY main.py /usr/src/app/main.py
